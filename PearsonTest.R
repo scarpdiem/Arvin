@@ -1,0 +1,13 @@
+setwd("C:/Users/Administrator/Desktop/Spot DataSet")
+w<-scan("exam.txt")
+q<-qqnorm(w)
+qqline(w)
+stop("quantile quantile plot")
+x<-c(0,50,60,70,80,90,100)
+C<-cut(w,br=x)
+A<-table(cut(w,br<-x))
+pr<-pnorm(x,mean(w),sd(w))
+p<-diff(pr)
+p[length(p)]<-1-sum(p[1:length(p)-1])
+chisq.test(A,p=p)
+
